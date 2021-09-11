@@ -2,6 +2,7 @@ package Trivia;
 
 public class Option {
 	private String statement;
+	private boolean correct = false;
 
 	public Option(String statement) {
 		this.statement = statement;
@@ -14,6 +15,12 @@ public class Option {
 	public void setStatement(String statement) {
 		this.statement = statement;
 	}
-	
-	
+
+	public boolean isCorrect() {
+		return correct;
+	}
+
+	public void setCorrect(boolean correct) {
+		this.correct = correct;
+	}
 }
