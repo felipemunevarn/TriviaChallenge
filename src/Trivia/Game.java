@@ -11,6 +11,7 @@ public class Game {
 	private boolean finished = false;
 	private ArrayList<Question> questions = new ArrayList<Question>();
 	
+	
 	public boolean isSetted() {
 		return setted;
 	}
@@ -59,7 +60,9 @@ public class Game {
 		ArrayList<Option> tempOptions = new ArrayList<Option>();
 		
 		do {
-			//getting all the questions by level
+			
+			System.out.println("LEVEL " + (round + 1) + ":");
+			// getting all the questions by level
 			for (int i = 0; i < questions.size(); i++) {
 				if(this.questions.get(i).getLevel() == round)
 					questionByLevel.add(this.questions.get(i));
@@ -71,7 +74,6 @@ public class Game {
 			for(Option i : questionByLevel.get(position).getOptions()) {
 				tempOptions.add(i);
 			}
-//			String correctStatement = questionByLevel.get(position).getOptions()[0].getStatement();
 			//showing options randomly ordered to choose the answer
 			int i = 0;
 			int correctPosition = 0;
@@ -93,24 +95,22 @@ public class Game {
 			else {
 				player.setScore(player.getScore() + (round + 1) * 5);
 				System.out.println("Correct! Your score is " + player.getScore());
-//				if (round == 5) {
-//					setFinished(true);
-//				}
 			}
 			round++;
-			
 		} while (round < 5 && !isFinished());
 		setFinished(true);
 	}
 	
-	public void finishes() {
-		if (player.getScore() > 0) {
-			String name = "e.g. name";
-			player.setName(name);
-			System.out.println("Congratulations " + player.getName() + "!");
-		} else {
-			System.out.println("Sorry, too low score. Try again!");
-		}
+	public void finishes(String name) {
+		player.setName(name);
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 }
