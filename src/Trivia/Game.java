@@ -11,7 +11,6 @@ public class Game {
 	private boolean finished = false;
 	private ArrayList<Question> questions = new ArrayList<Question>();
 	
-	
 	public boolean isSetted() {
 		return setted;
 	}
@@ -112,5 +111,5 @@ public class Game {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-
+	
 }
