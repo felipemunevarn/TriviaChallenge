@@ -48,7 +48,7 @@ public class App {
 		try (Statement sql = con.createStatement()) {
 			ResultSet rset = sql.executeQuery("SELECT name, score FROM players ORDER BY score DESC;");
 			while (rset.next()) {
-				System.out.printf("%-40s %-10s%n", rset.getString("name"), rset.getInt("score"));
+				System.out.printf("%-20s %-10s%n", rset.getString("name"), rset.getInt("score"));
 			}
 		} catch (Exception e) {
 			System.out.println("Something went wrong");

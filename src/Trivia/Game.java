@@ -88,7 +88,12 @@ public class Game {
 			} while (tempOptions.size() > 0);
 			System.out.println("option 5: Quit");
 			// read answer
-			ans = in.nextInt();
+			do {
+				System.out.print("Your answer? ");
+				ans = in.nextInt();
+				if (ans < 1 || ans > 5)
+					System.out.println("Try aganin");
+			} while (ans < 1 || ans > 5);
 			if (ans == 5 || ans != correctPosition)
 				setFinished(true);			
 			else {
