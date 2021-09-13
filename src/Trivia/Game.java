@@ -35,8 +35,7 @@ public class Game {
 				options[i] = new Option(statement);
 				if (i == 0) 
 					options[i].setCorrect(true);				
-			}
-			
+			}			
 			Question tempQuestion = new Question((count / 5), question, options);
 			this.questions.add(tempQuestion);
 			count++;			
@@ -64,15 +63,16 @@ public class Game {
 			// getting all the questions by level
 			for (int i = 0; i < questions.size(); i++) {
 				if(this.questions.get(i).getLevel() == round)
-					questionByLevel.add(this.questions.get(i));
+					questionByLevel.add(this.questions.get(i));			
 			}
 			//choosing and printing one randomly
 			int position = (int)(questionByLevel.size() * Math.random());			
 			System.out.println(questionByLevel.get(position).getQuestion());
-			//finding the options for the questing choosed
+			//finding the options for the questing choose
 			for(Option i : questionByLevel.get(position).getOptions()) {
 				tempOptions.add(i);
 			}
+			questionByLevel.clear();
 			//showing options randomly ordered to choose the answer
 			int i = 0;
 			int correctPosition = 0;
@@ -89,10 +89,12 @@ public class Game {
 			System.out.println("option 5: Quit");
 			// read answer
 			do {
-				System.out.print("Your answer? ");
+				System.out.println("Your answer? (from 1 to 5) ");
+				while (!in.hasNextInt()) {
+					System.out.println("That's not a number!");
+					in.next();
+				}
 				ans = in.nextInt();
-				if (ans < 1 || ans > 5)
-					System.out.println("Try aganin");
 			} while (ans < 1 || ans > 5);
 			if (ans == 5 || ans != correctPosition)
 				setFinished(true);			
